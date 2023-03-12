@@ -1,25 +1,24 @@
 import styles from "./Post.module.css";
 
-export function Post({ author }) {
+export function Post({ author, position, linkAvatar }) {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img className={styles.avatar} src="http://github.com/thuurzz.png" />
+          <img className={styles.avatar} src={linkAvatar} />
           <div className={styles.authorInfo}>
             <strong>{author}</strong>
-            <span>Arq. Tecnologia Jr.</span>
+            <span>{position}</span>
           </div>
         </div>
         <time>Publicado há 1h</time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋 Acabei de subir mais um projeto no meu portifa.</p>
-        <p>
-          É um projeto que fiz no NLW Return, evento da Rocketseat. O nome
-          doprojeto é DoctorCare 🚀{" "}
-        </p>
+        <p>Fala galeraa! </p>
+        <p>👋 Acabei de subir mais um projeto no meu portifa.</p>
+        <p>É um projeto que fiz no NLW Return, evento da Rocketseat.</p>
+        <p>O nome doprojeto é DoctorCare 🚀</p>
         <p>
           <a href="">jane.design/doctorcare #novoprojeto #nlw #rocketseat</a>
         </p>
@@ -29,6 +28,15 @@ export function Post({ author }) {
           <a href=""> #rocketseat</a>
         </p>
       </div>
+
+      <form className={styles.commentForm}>
+        <strong> Deixe seu feedback</strong>
+
+        <textarea placeholder="Deixe seu cometário" />
+        <footer>
+          <button type="submit">Publicar</button>
+        </footer>
+      </form>
     </article>
   );
 }
