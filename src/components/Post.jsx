@@ -19,8 +19,8 @@ export function Post({ author, position, linkAvatar }) {
       <div className={styles.content}>
         <p>Fala galeraa! </p>
         <p>👋 Acabei de subir mais um projeto no meu portifa.</p>
-        <p>É um projeto que fiz no NLW Return, evento da Rocketseat.</p>
-        <p>O nome doprojeto é DoctorCare 🚀</p>
+        <p>É um projeto que fiz no Ignite, evento da Rocketseat.</p>
+        <p>O nome doprojeto é Ignite Fedd 🚀</p>
         <p>
           <a href="">jane.design/doctorcare #novoprojeto #nlw #rocketseat</a>
         </p>
