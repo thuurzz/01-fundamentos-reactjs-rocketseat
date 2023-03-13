@@ -1,6 +1,7 @@
-import styles from "./Sidebar.module.css";
-
+import { Avatar } from "./Avatar";
 import { PencilLine } from "@phosphor-icons/react";
+
+import styles from "./Sidebar.module.css";
 
 export function Sidebar() {
   return (
@@ -11,8 +12,7 @@ export function Sidebar() {
       />
 
       <div className={styles.profile}>
-        <img
-          className={styles.avatar}
+        <Avatar hasBorder
           src="https://avatars.githubusercontent.com/u/53263896?v=4"
         />
         <strong>Arthur Vinicius</strong>
