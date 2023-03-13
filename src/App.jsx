@@ -1,10 +1,9 @@
 import { Header } from "./components/Header";
 import { Post } from "./components/Post";
+import { Sidebar } from "./components/Sidebar";
 
 import styles from "./App.module.css";
-
 import "./global.css";
-import { Sidebar } from "./components/Sidebar";
 
 export function App() {
   return (
@@ -20,14 +19,14 @@ export function App() {
             linkAvatar={"http://github.com/thuurzz.png"}
           />
           <Post
-            author="Larrisa Ionafa"
-            position={"Eng. de Software"}
-            linkAvatar={"http://github.com/y0naha.png"}
-          />
-          <Post
             author="Lucas Silva"
             position={"Arq. de Componentes"}
             linkAvatar={"http://github.com/lucas-silvs.png"}
+          />
+          <Post
+            author="Larrisa Ionafa"
+            position={"Eng. de Software"}
+            linkAvatar={"http://github.com/y0naha.png"}
           />
         </main>
       </div>
