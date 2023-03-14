@@ -2,12 +2,37 @@ import { Header } from "./components/Header";
 import { Post } from "./components/Post";
 import { Sidebar } from "./components/Sidebar";
 
+import { v4 as uuidv4 } from "uuid";
+
 import styles from "./App.module.css";
 import "./global.css";
 
-const post = [
+const posts = [
   {
-    id: crypto.randomUUID(),
+    id: uuidv4(),
+    author: {
+      name: "Luan Andrade",
+      position: "Arq. Componentes e API Mentor",
+      linkAvatar: "http://github.com/Luan10017.png",
+    },
+    publishedAt: new Date(),
+    content: [
+      {
+        type: "paragraph",
+        text: "Fala galeraa!👋",
+      },
+      {
+        type: "paragraph",
+        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite feed 🚀",
+      },
+      {
+        type: "link",
+        text: "jane.design/doctorcare",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
     author: {
       name: "Arthur Silva",
       position: "Arq. Tecnologia Jr",
@@ -21,7 +46,7 @@ const post = [
       },
       {
         type: "paragraph",
-        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite Fedd 🚀",
+        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite feed 🚀",
       },
       {
         type: "link",
@@ -30,7 +55,7 @@ const post = [
     ],
   },
   {
-    id: crypto.randomUUID(),
+    id: uuidv4(),
     author: {
       name: "Lucas Silva",
       position: "Arq. de Componentes",
@@ -44,7 +69,7 @@ const post = [
       },
       {
         type: "paragraph",
-        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite Fedd 🚀",
+        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite feed 🚀",
       },
       {
         type: "link",
@@ -53,7 +78,7 @@ const post = [
     ],
   },
   {
-    id: crypto.randomUUID(),
+    id: uuidv4(),
     author: {
       name: "Larissa Ionafa",
       position: "Eg. de Software",
@@ -67,7 +92,7 @@ const post = [
       },
       {
         type: "paragraph",
-        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite Fedd 🚀",
+        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite feed 🚀",
       },
       {
         type: "link",
@@ -81,16 +106,15 @@ export function App() {
   return (
     <div>
       <Header />
-
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          {post.map((p) => (
-            <Post
-              key={p.id}
-              author={p.author}
-              publishedAt={p.publishedAt}
-              content={p.content}
+          {posts.map((post) => (
+            <Postost
+              key={post.id}
+              author={post.ostauthor}
+              publishedAt={post.publishedAt}
+              content={post.content}
             />
           ))}
         </main>
