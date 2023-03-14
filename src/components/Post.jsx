@@ -1,34 +1,46 @@
+import { format, formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
+
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
+
 import styles from "./Post.module.css";
 
-export function Post({ author, position, linkAvatar }) {
+export function Post({ author, publishedAt, content }) {
+  const dateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+    locale: ptBR,
+  });
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar hasBorder src={linkAvatar} />
+          <Avatar hasBorder src={author.linkAvatar} />
           <div className={styles.authorInfo}>
-            <strong>{author}</strong>
-            <span>{position}</span>
+            <strong>{author.name}</strong>
+            <span>{author.position}</span>
           </div>
         </div>
-        <time>Publicado há 1h</time>
+        <time title={dateFormatted} dateTime={publishedAt.toISOString()}>
+          {publishedDateRelativeToNow}
+        </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa! </p>
-        <p>👋 Acabei de subir mais um projeto no meu portifa.</p>
-        <p>É um projeto que fiz no Ignite, evento da Rocketseat.</p>
-        <p>O nome doprojeto é Ignite Fedd 🚀</p>
-        <p>
-          <a href="">jane.design/doctorcare #novoprojeto #nlw #rocketseat</a>
-        </p>
-        <p>
-          <a href=""> #novoprojeto</a>
-          <a href=""> #nlw </a>
-          <a href=""> #rocketseat</a>
-        </p>
+        {content.map((linha, index) =>
+          linha.type === "paragraph" ? (
+            <p key={index}>{linha.text}</p>
+          ) : (
+            <p key={index}>
+              <a href="#">{linha.text}</a>
+            </p>
+          )
+        )}
       </div>
 
       <form className={styles.commentForm}>
