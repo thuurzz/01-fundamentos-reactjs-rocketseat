@@ -110,9 +110,9 @@ export function App() {
         <Sidebar />
         <main>
           {posts.map((post) => (
-            <Postost
+            <Post
               key={post.id}
-              author={post.ostauthor}
+              author={post.author}
               publishedAt={post.publishedAt}
               content={post.content}
             />
