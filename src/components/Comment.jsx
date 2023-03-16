@@ -3,9 +3,9 @@ import styles from "./Comment.module.css";
 
 import { Trash, ThumbsUp } from "@phosphor-icons/react";
 
-export function Comment({ content, OnDeleteComment }) {
+export function Comment({ comment, OnDeleteComment }) {
   function handleDeleteComment() {
-    OnDeleteComment(content);
+    OnDeleteComment(comment.id);
   }
 
   return (
@@ -25,7 +25,7 @@ export function Comment({ content, OnDeleteComment }) {
               <Trash size={24} />
             </button>
           </header>
-          <p>{content}</p>
+          <p>{comment.content}</p>
         </div>
         <footer>
           <button>
