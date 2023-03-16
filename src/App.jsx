@@ -57,9 +57,32 @@ const posts = [
   {
     id: uuidv4(),
     author: {
-      name: "Lucas Silva",
-      position: "Arq. de Componentes",
-      linkAvatar: "http://github.com/lucas-silvs.png",
+      name: "Arthur Silva",
+      position: "Arq. Tecnologia Jr",
+      linkAvatar: "http://github.com/thuurzz.png",
+    },
+    publishedAt: new Date(),
+    content: [
+      {
+        type: "paragraph",
+        text: "Fala galeraa!👋",
+      },
+      {
+        type: "paragraph",
+        text: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no Ignite, evento da Rocketseat. O nome doprojeto é Ignite feed 🚀",
+      },
+      {
+        type: "link",
+        text: "jane.design/doctorcare",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    author: {
+      name: "Beatriz Melo",
+      position: "Arq. de Tec",
+      linkAvatar: "http://github.com/trizimelo.png",
     },
     publishedAt: new Date(),
     content: [
