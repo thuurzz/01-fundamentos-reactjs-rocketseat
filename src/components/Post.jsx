@@ -2,9 +2,6 @@ import { useState } from "react";
 
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-
-import { v4 as uuidv4 } from "uuid";
-
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 
@@ -12,7 +9,7 @@ import styles from "./Post.module.css";
 
 export function Post({ author, publishedAt, content }) {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState({ id: "", content: "" });
+  const [newComment, setNewComment] = useState("");
 
   const dateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
@@ -26,22 +23,22 @@ export function Post({ author, publishedAt, content }) {
   function handleCreateANewComment() {
     event.preventDefault();
 
-    const newCommentCreated = {
-      id: uuidv4(),
-      content: newComment,
-    };
-
-    setComments([...comments, newCommentCreated]);
-    setNewComment({ id: "", content: "" });
+    setComments([...comments, newComment]);
+    setNewComment("");
   }
 
   function handleNewComment() {
+    event.target.setCustomValidity("");
     setNewComment(event.target.value);
   }
 
-  function OnDeleteComment(commentIdToDelete) {
+  function handleNewCommentInvalid() {
+    event.target.setCustomValidity("Esse campo é obrigatório!");
+  }
+
+  function OnDeleteComment(commentToDelete) {
     const commentsWithoutDeletedOne = comments.filter(
-      (comment) => comment.id !== commentIdToDelete
+      (comment) => comment !== commentToDelete
     );
     setComments(commentsWithoutDeletedOne);
   }
@@ -78,19 +75,23 @@ export function Post({ author, publishedAt, content }) {
 
         <textarea
           name="comment"
-          value={newComment.content}
+          value={newComment}
           onChange={handleNewComment}
           placeholder="Deixe seu cometário"
+          onInvalid={handleNewCommentInvalid}
+          required
         />
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={!newComment}>
+            Publicar
+          </button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
         {comments.map((comment) => (
           <Comment
-            key={comment.id}
+            key={comment}
             comment={comment}
             OnDeleteComment={OnDeleteComment}
           />

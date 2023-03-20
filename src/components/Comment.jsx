@@ -5,7 +5,7 @@ import { Trash, ThumbsUp } from "@phosphor-icons/react";
 
 export function Comment({ comment, OnDeleteComment }) {
   function handleDeleteComment() {
-    OnDeleteComment(comment.id);
+    OnDeleteComment(comment);
   }
 
   return (
@@ -25,7 +25,7 @@ export function Comment({ comment, OnDeleteComment }) {
               <Trash size={24} />
             </button>
           </header>
-          <p>{comment.content}</p>
+          <p>{comment}</p>
         </div>
         <footer>
           <button>
