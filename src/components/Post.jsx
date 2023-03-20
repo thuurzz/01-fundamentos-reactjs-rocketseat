@@ -8,7 +8,7 @@ import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
 export function Post({ author, publishedAt, content }) {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(["Muito legal!"]);
   const [newComment, setNewComment] = useState("");
 
   const dateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
